@@ -52,7 +52,7 @@ namespace TaxReceiptTool
                 {
                     case 0:
                         RSDKvRS.Animation animvRS = new RSDKvRS.Animation();
-                        List<RSDKvRS.Animation.sprAnimation> sprAnimvRS = new List<RSDKvRS.Animation.sprAnimation>();
+                        List<RSDKvRS.Animation.AnimationEntry> sprAnimvRS = new List<RSDKvRS.Animation.AnimationEntry>();
 
                         RSDKv1.Script.Sub subvRS = new RSDKv1.Script.Sub();
 
@@ -76,10 +76,10 @@ namespace TaxReceiptTool
 
                         for (byte s = 0; s < LoadSpritesvRS.Count; s++)
                         {
-                            RSDKvRS.Animation.sprAnimation a = new RSDKvRS.Animation.sprAnimation();
+                            RSDKvRS.Animation.AnimationEntry a = new RSDKvRS.Animation.AnimationEntry();
                             for (int i = 0; i < SpriteFramesvRS.Count; i++)
                             {
-                                RSDKvRS.Animation.sprAnimation.sprFrame Frame = new RSDKvRS.Animation.sprAnimation.sprFrame();
+                                RSDKvRS.Animation.AnimationEntry.Frame Frame = new RSDKvRS.Animation.AnimationEntry.Frame();
                                 Frame.PivotX = Convert.ToSByte(SpriteFramesvRS[i].Paramaters[0]);
                                 Frame.PivotY = Convert.ToSByte(SpriteFramesvRS[i].Paramaters[1]);
                                 Frame.Width = Convert.ToByte(SpriteFramesvRS[i].Paramaters[2]);
@@ -102,7 +102,7 @@ namespace TaxReceiptTool
                         break;
                     case 1:
                         RSDKv1.Animation animv1 = new RSDKv1.Animation();
-                        List<RSDKv1.Animation.sprAnimation> sprAnimv1 = new List<RSDKv1.Animation.sprAnimation>();
+                        List<RSDKv1.Animation.AnimationEntry> sprAnimv1 = new List<RSDKv1.Animation.AnimationEntry>();
 
                         RSDKv1.Script.Sub subv1 = new RSDKv1.Script.Sub();
 
@@ -126,10 +126,10 @@ namespace TaxReceiptTool
 
                         for (byte s = 0; s < LoadSpritesv1.Count; s++)
                         {
-                            RSDKv1.Animation.sprAnimation a = new RSDKv1.Animation.sprAnimation();
+                            RSDKv1.Animation.AnimationEntry a = new RSDKv1.Animation.AnimationEntry();
                             for (int i = 0; i < SpriteFramesv1.Count; i++)
                             {
-                                RSDKv1.Animation.sprAnimation.sprFrame Frame = new RSDKv1.Animation.sprAnimation.sprFrame();
+                                RSDKv1.Animation.AnimationEntry.Frame Frame = new RSDKv1.Animation.AnimationEntry.Frame();
                                 Frame.PivotX = Convert.ToSByte(SpriteFramesv1[i].Paramaters[0]);
                                 Frame.PivotY = Convert.ToSByte(SpriteFramesv1[i].Paramaters[1]);
                                 Frame.Width = Convert.ToByte(SpriteFramesv1[i].Paramaters[2]);
@@ -152,7 +152,7 @@ namespace TaxReceiptTool
                         break;
                     case 2:
                         RSDKv2.Animation animv2 = new RSDKv2.Animation();
-                        List<RSDKv2.Animation.sprAnimation> sprAnimv2 = new List<RSDKv2.Animation.sprAnimation>();
+                        List<RSDKv2.Animation.AnimationEntry> sprAnimv2 = new List<RSDKv2.Animation.AnimationEntry>();
 
                         RSDKv1.Script.Sub subv2 = new RSDKv1.Script.Sub();
 
@@ -176,7 +176,7 @@ namespace TaxReceiptTool
 
                         for (byte s = 0; s < LoadSpritesv2.Count; s++)
                         {
-                            RSDKv2.Animation.sprAnimation a = new RSDKv2.Animation.sprAnimation();
+                            RSDKv2.Animation.AnimationEntry a = new RSDKv2.Animation.AnimationEntry();
                             a.AnimName = name + " Animation " + s;
                             for (int i = 0; i < SpriteFramesv2.Count; i++)
                             {
@@ -193,7 +193,7 @@ namespace TaxReceiptTool
                                 if (Y > 255) Y = 255;
 
 
-                                RSDKv2.Animation.sprAnimation.sprFrame Frame = new RSDKv2.Animation.sprAnimation.sprFrame();
+                                RSDKv2.Animation.AnimationEntry.Frame Frame = new RSDKv2.Animation.AnimationEntry.Frame();
                                 Frame.PivotX = (SByte)PivotX;
                                 Frame.PivotY = (SByte)PivotY;
                                 Frame.Width = (byte)Width;
@@ -215,7 +215,7 @@ namespace TaxReceiptTool
                         break;
                     case 3:
                         RSDKvB.Animation animvB = new RSDKvB.Animation();
-                        List<RSDKvB.Animation.sprAnimation> sprAnimvB = new List<RSDKvB.Animation.sprAnimation>();
+                        List<RSDKvB.Animation.AnimationEntry> sprAnimvB = new List<RSDKvB.Animation.AnimationEntry>();
 
                         RSDKv1.Script.Sub subvB = new RSDKv1.Script.Sub();
 
@@ -239,11 +239,11 @@ namespace TaxReceiptTool
 
                         for (byte s = 0; s < LoadSpritesvB.Count; s++)
                         {
-                            RSDKvB.Animation.sprAnimation a = new RSDKvB.Animation.sprAnimation();
+                            RSDKvB.Animation.AnimationEntry a = new RSDKvB.Animation.AnimationEntry();
                             a.AnimName = name + " Animation " + s;
                             for (int i = 0; i < SpriteFramesvB.Count; i++)
                             {
-                                RSDKvB.Animation.sprAnimation.sprFrame Frame = new RSDKvB.Animation.sprAnimation.sprFrame();
+                                RSDKvB.Animation.AnimationEntry.Frame Frame = new RSDKvB.Animation.AnimationEntry.Frame();
                                 Frame.PivotX = Convert.ToSByte(SpriteFramesvB[i].Paramaters[0]);
                                 Frame.PivotY = Convert.ToSByte(SpriteFramesvB[i].Paramaters[1]);
                                 Frame.Width = Convert.ToByte(SpriteFramesvB[i].Paramaters[2]);
@@ -266,7 +266,7 @@ namespace TaxReceiptTool
                         break;
                     case 4:
                         RSDKv5.Animation animv5 = new RSDKv5.Animation();
-                        List<RSDKv5.Animation.sprAnimation> sprAnimv5 = new List<RSDKv5.Animation.sprAnimation>();
+                        List<RSDKv5.Animation.AnimationEntry> sprAnimv5 = new List<RSDKv5.Animation.AnimationEntry>();
 
                         RSDKv1.Script.Sub subv5 = new RSDKv1.Script.Sub();
 
@@ -290,11 +290,11 @@ namespace TaxReceiptTool
 
                         for (byte s = 0; s < LoadSpritesv5.Count; s++)
                         {
-                            RSDKv5.Animation.sprAnimation a = new RSDKv5.Animation.sprAnimation();
+                            RSDKv5.Animation.AnimationEntry a = new RSDKv5.Animation.AnimationEntry();
                             a.AnimName = name + " Animation " + s;
                             for (int i = 0; i < SpriteFramesv5.Count; i++)
                             {
-                                RSDKv5.Animation.sprAnimation.sprFrame Frame = new RSDKv5.Animation.sprAnimation.sprFrame();
+                                RSDKv5.Animation.AnimationEntry.Frame Frame = new RSDKv5.Animation.AnimationEntry.Frame();
                                 Frame.PivotX = Convert.ToSByte(SpriteFramesv5[i].Paramaters[0]);
                                 Frame.PivotY = Convert.ToSByte(SpriteFramesv5[i].Paramaters[1]);
                                 Frame.Width = Convert.ToByte(SpriteFramesv5[i].Paramaters[2]);
@@ -394,7 +394,7 @@ namespace TaxReceiptTool
             {
                 case 0:
                     RSDKvRS.Animation animvRS = new RSDKvRS.Animation();
-                    List<RSDKvRS.Animation.sprAnimation> sprAnimvRS = new List<RSDKvRS.Animation.sprAnimation>();
+                    List<RSDKvRS.Animation.AnimationEntry> sprAnimvRS = new List<RSDKvRS.Animation.AnimationEntry>();
 
                     RSDKv1.Script.Sub subvRS = new RSDKv1.Script.Sub();
 
@@ -418,10 +418,10 @@ namespace TaxReceiptTool
 
                     for (byte s = 0; s < LoadSpritesvRS.Count; s++)
                     {
-                        RSDKvRS.Animation.sprAnimation a = new RSDKvRS.Animation.sprAnimation();
+                        RSDKvRS.Animation.AnimationEntry a = new RSDKvRS.Animation.AnimationEntry();
                         for (int i = 0; i < SpriteFramesvRS.Count; i++)
                         {
-                            RSDKvRS.Animation.sprAnimation.sprFrame Frame = new RSDKvRS.Animation.sprAnimation.sprFrame();
+                            RSDKvRS.Animation.AnimationEntry.Frame Frame = new RSDKvRS.Animation.AnimationEntry.Frame();
                             Frame.PivotX = Convert.ToSByte(SpriteFramesvRS[i].Paramaters[0]);
                             Frame.PivotY = Convert.ToSByte(SpriteFramesvRS[i].Paramaters[1]);
                             Frame.Width = Convert.ToByte(SpriteFramesvRS[i].Paramaters[2]);
@@ -446,7 +446,7 @@ namespace TaxReceiptTool
                     break;
                 case 1:
                     RSDKv1.Animation animv1 = new RSDKv1.Animation();
-                    List<RSDKv1.Animation.sprAnimation> sprAnimv1 = new List<RSDKv1.Animation.sprAnimation>();
+                    List<RSDKv1.Animation.AnimationEntry> sprAnimv1 = new List<RSDKv1.Animation.AnimationEntry>();
 
                     RSDKv1.Script.Sub subv1 = new RSDKv1.Script.Sub();
 
@@ -470,10 +470,10 @@ namespace TaxReceiptTool
 
                     for (byte s = 0; s < LoadSpritesv1.Count; s++)
                     {
-                        RSDKv1.Animation.sprAnimation a = new RSDKv1.Animation.sprAnimation();
+                        RSDKv1.Animation.AnimationEntry a = new RSDKv1.Animation.AnimationEntry();
                         for (int i = 0; i < SpriteFramesv1.Count; i++)
                         {
-                            RSDKv1.Animation.sprAnimation.sprFrame Frame = new RSDKv1.Animation.sprAnimation.sprFrame();
+                            RSDKv1.Animation.AnimationEntry.Frame Frame = new RSDKv1.Animation.AnimationEntry.Frame();
                             Frame.PivotX = 0;
                             Frame.PivotX = 0;
                             Frame.X = 0;
@@ -511,7 +511,7 @@ namespace TaxReceiptTool
                     break;
                 case 2:
                     List<RSDKv2.Animation> animv2 = new List<RSDKv2.Animation>();
-                    RSDKv2.Animation.sprAnimation sprAnimv2 = new RSDKv2.Animation.sprAnimation();
+                    RSDKv2.Animation.AnimationEntry sprAnimv2 = new RSDKv2.Animation.AnimationEntry();
 
                     RSDKv1.Script.Sub subv2 = new RSDKv1.Script.Sub();
 
@@ -549,12 +549,12 @@ namespace TaxReceiptTool
                     for (byte s = 0; s < LoadSpritesv2.Count; s++)
                     {
 
-                        RSDKv2.Animation.sprAnimation a = new RSDKv2.Animation.sprAnimation();
+                        RSDKv2.Animation.AnimationEntry a = new RSDKv2.Animation.AnimationEntry();
                         if (s == 0) a.AnimName = name + " Animation";
                         else if (s > 0) a.AnimName = name + " Animation " + s;
                         for (int i = 0; i < SpriteFramesv2.Count; i++)
                         {
-                            RSDKv2.Animation.sprAnimation.sprFrame Frame = new RSDKv2.Animation.sprAnimation.sprFrame();
+                            RSDKv2.Animation.AnimationEntry.Frame Frame = new RSDKv2.Animation.AnimationEntry.Frame();
                             Frame.PivotX = 0;
                             Frame.PivotX = 0;
                             Frame.X = 0;
@@ -590,7 +590,7 @@ namespace TaxReceiptTool
                     break;
                 case 3:
                     RSDKvB.Animation animvB = new RSDKvB.Animation();
-                    List<RSDKvB.Animation.sprAnimation> sprAnimvB = new List<RSDKvB.Animation.sprAnimation>();
+                    List<RSDKvB.Animation.AnimationEntry> sprAnimvB = new List<RSDKvB.Animation.AnimationEntry>();
 
                     RSDKv1.Script.Sub subvB = new RSDKv1.Script.Sub();
 
@@ -614,11 +614,11 @@ namespace TaxReceiptTool
 
                     for (byte s = 0; s < LoadSpritesvB.Count; s++)
                     {
-                        RSDKvB.Animation.sprAnimation a = new RSDKvB.Animation.sprAnimation();
+                        RSDKvB.Animation.AnimationEntry a = new RSDKvB.Animation.AnimationEntry();
                         a.AnimName = name + " Animation " + s;
                         for (int i = 0; i < SpriteFramesvB.Count; i++)
                         {
-                            RSDKvB.Animation.sprAnimation.sprFrame Frame = new RSDKvB.Animation.sprAnimation.sprFrame();
+                            RSDKvB.Animation.AnimationEntry.Frame Frame = new RSDKvB.Animation.AnimationEntry.Frame();
                             Frame.PivotX = 0;
                             Frame.PivotX = 0;
                             Frame.X = 0;
@@ -656,7 +656,7 @@ namespace TaxReceiptTool
                     break;
                 case 4:
                     RSDKv5.Animation animv5 = new RSDKv5.Animation();
-                    List<RSDKv5.Animation.sprAnimation> sprAnimv5 = new List<RSDKv5.Animation.sprAnimation>();
+                    List<RSDKv5.Animation.AnimationEntry> sprAnimv5 = new List<RSDKv5.Animation.AnimationEntry>();
 
                     RSDKv1.Script.Sub subv5 = new RSDKv1.Script.Sub();
 
@@ -680,11 +680,11 @@ namespace TaxReceiptTool
 
                     for (byte s = 0; s < LoadSpritesv5.Count; s++)
                     {
-                        RSDKv5.Animation.sprAnimation a = new RSDKv5.Animation.sprAnimation();
+                        RSDKv5.Animation.AnimationEntry a = new RSDKv5.Animation.AnimationEntry();
                         a.AnimName = name + " Animation " + s;
                         for (int i = 0; i < SpriteFramesv5.Count; i++)
                         {
-                            RSDKv5.Animation.sprAnimation.sprFrame Frame = new RSDKv5.Animation.sprAnimation.sprFrame();
+                            RSDKv5.Animation.AnimationEntry.Frame Frame = new RSDKv5.Animation.AnimationEntry.Frame();
                             Frame.PivotX = Convert.ToSByte(SpriteFramesv5[i].Paramaters[0]);
                             Frame.PivotY = Convert.ToSByte(SpriteFramesv5[i].Paramaters[1]);
                             Frame.Width = Convert.ToByte(SpriteFramesv5[i].Paramaters[2]);
