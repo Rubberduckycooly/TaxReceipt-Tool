@@ -177,7 +177,7 @@ namespace TaxReceiptTool
                         for (byte s = 0; s < LoadSpritesv2.Count; s++)
                         {
                             RSDKv2.Animation.AnimationEntry a = new RSDKv2.Animation.AnimationEntry();
-                            a.AnimName = name + " Animation " + s;
+                            a.AnimName = name + "Animation " + s;
                             for (int i = 0; i < SpriteFramesv2.Count; i++)
                             {
                                 int PivotX = Convert.ToInt32(SpriteFramesv2[i].Paramaters[0]);
@@ -240,7 +240,7 @@ namespace TaxReceiptTool
                         for (byte s = 0; s < LoadSpritesvB.Count; s++)
                         {
                             RSDKvB.Animation.AnimationEntry a = new RSDKvB.Animation.AnimationEntry();
-                            a.AnimName = name + " Animation " + s;
+                            a.AnimName = name + "Animation " + s;
                             for (int i = 0; i < SpriteFramesvB.Count; i++)
                             {
                                 RSDKvB.Animation.AnimationEntry.Frame Frame = new RSDKvB.Animation.AnimationEntry.Frame();
@@ -291,7 +291,7 @@ namespace TaxReceiptTool
                         for (byte s = 0; s < LoadSpritesv5.Count; s++)
                         {
                             RSDKv5.Animation.AnimationEntry a = new RSDKv5.Animation.AnimationEntry();
-                            a.AnimName = name + " Animation " + s;
+                            a.AnimName = name + "Animation " + s;
                             for (int i = 0; i < SpriteFramesv5.Count; i++)
                             {
                                 RSDKv5.Animation.AnimationEntry.Frame Frame = new RSDKv5.Animation.AnimationEntry.Frame();
@@ -407,6 +407,34 @@ namespace TaxReceiptTool
                         }
                     }
 
+                    List<RSDKv1.Script.Sub.Function> CollisionvRS = subvRS.GetFunctionByName("PlayerObjectCollision");
+
+                    List<RSDKvRS.Animation.AnimationEntry.Frame.HitBox> HitboxesvRS = new List<RSDKvRS.Animation.AnimationEntry.Frame.HitBox>();
+
+                    for (int i = 0; i < CollisionvRS.Count; i++)
+                    {
+                        string name = CollisionvRS[i].Paramaters[0].Replace("C_", "");
+                        sbyte x, y, w, h;
+                        x = y = w = h = 0;
+                        try
+                        {
+                            x = sbyte.Parse(CollisionvRS[i].Paramaters[1]);
+                            y = sbyte.Parse(CollisionvRS[i].Paramaters[2]);
+                            w = sbyte.Parse(CollisionvRS[i].Paramaters[3]);
+                            h = sbyte.Parse(CollisionvRS[i].Paramaters[4]);
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                        RSDKvRS.Animation.AnimationEntry.Frame.HitBox hb = new RSDKvRS.Animation.AnimationEntry.Frame.HitBox();
+                        hb.X = x;
+                        hb.Y = y;
+                        hb.Width = w;
+                        hb.Height = h;
+                        HitboxesvRS.Add(hb);
+                    }
+
                     List<RSDKv1.Script.Sub.Function> LoadSpritesvRS = subvRS.GetFunctionByName("LoadSpriteSheet");
 
                     for (int i = 0; i < LoadSpritesvRS.Count; i++)
@@ -429,6 +457,12 @@ namespace TaxReceiptTool
                             Frame.X = Convert.ToByte(SpriteFramesvRS[i].Paramaters[4]);
                             Frame.Y = Convert.ToByte(SpriteFramesvRS[i].Paramaters[5]);
                             Frame.SpriteSheet = s;
+
+                            Frame.CollisionBox.X = HitboxesvRS[0].X;
+                            Frame.CollisionBox.Y = HitboxesvRS[0].Y;
+                            Frame.CollisionBox.Width = HitboxesvRS[0].Width;
+                            Frame.CollisionBox.Height = HitboxesvRS[0].Height;
+
                             a.Frames.Add(Frame);
                         }
                         sprAnimvRS.Add(a);
@@ -457,6 +491,46 @@ namespace TaxReceiptTool
                             subv1 = Scripts[Value0].Subs[i];
                             break;
                         }
+                    }
+
+                    List<RSDKv1.Script.Sub.Function> Collisionv1 = subv1.GetFunctionByName("PlayerObjectCollision");
+
+                    List<RSDKv1.Animation.sprHitbox> Hitboxesv1 = new List<RSDKv1.Animation.sprHitbox>();
+
+                    animv1.CollisionBoxes.Clear();
+
+                    if (Collisionv1.Count <= 0)
+                    {
+                        RSDKv1.Animation.sprHitbox hb = new RSDKv1.Animation.sprHitbox();
+                        hb.Left = 0;
+                        hb.Top = 0;
+                        hb.Right = 0;
+                        hb.Bottom = 0;
+                        Hitboxesv1.Add(hb);
+                    }
+
+                    for (int i = 0; i < Collisionv1.Count; i++)
+                    {
+                        string name = Collisionv1[i].Paramaters[0].Replace("C_", "");
+                        sbyte x, y, w, h;
+                        x = y = w = h = 0;
+                        try
+                        {
+                            x = sbyte.Parse(Collisionv1[i].Paramaters[1]);
+                            y = sbyte.Parse(Collisionv1[i].Paramaters[2]);
+                            w = sbyte.Parse(Collisionv1[i].Paramaters[3]);
+                            h = sbyte.Parse(Collisionv1[i].Paramaters[4]);
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                        RSDKv1.Animation.sprHitbox hb = new RSDKv1.Animation.sprHitbox();
+                        hb.Top = x;
+                        hb.Left = y;
+                        hb.Right = w;
+                        hb.Bottom = h;
+                        animv1.CollisionBoxes.Add(hb);
                     }
 
                     List<RSDKv1.Script.Sub.Function> LoadSpritesv1 = subv1.GetFunctionByName("LoadSpriteSheet");
@@ -524,6 +598,49 @@ namespace TaxReceiptTool
                         }
                     }
 
+                    List<RSDKv1.Script.Sub.Function> Collisionv2 = subv2.GetFunctionByName("PlayerObjectCollision");
+
+                    List<RSDKv2.Animation.sprHitbox> Hitboxesv2 = new List<RSDKv2.Animation.sprHitbox>();
+
+                    animv2[0].CollisionBoxes.Clear();
+
+                    if (Collisionv2.Count <= 0)
+                    {
+                        RSDKv2.Animation.sprHitbox hb = new RSDKv2.Animation.sprHitbox();
+                        hb.Left = 0;
+                        hb.Top = 0;
+                        hb.Right = 0;
+                        hb.Bottom = 0;
+                        Hitboxesv2.Add(hb);
+                    }
+
+                    for (int i = 0; i < Collisionv2.Count; i++)
+                    {
+                        string name = Collisionv2[i].Paramaters[0].Replace("C_", "");
+                        sbyte x, y, w, h;
+                        x = y = w = h = 0;
+                        try
+                        {
+                            x = sbyte.Parse(Collisionv2[i].Paramaters[1]);
+                            y = sbyte.Parse(Collisionv2[i].Paramaters[2]);
+                            w = sbyte.Parse(Collisionv2[i].Paramaters[3]);
+                            h = sbyte.Parse(Collisionv2[i].Paramaters[4]);
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                        RSDKv2.Animation.sprHitbox hb = new RSDKv2.Animation.sprHitbox();
+                        hb.Top = x;
+                        hb.Left = y;
+                        hb.Right = w;
+                        hb.Bottom = h;
+                        for (int c = 0; c < animv2.Count; c++)
+                        {
+                            animv2[c].CollisionBoxes.Add(hb);
+                        }
+                    }
+
                     List<RSDKv1.Script.Sub.Function> LoadSpritesv2 = subv2.GetFunctionByName("LoadSpriteSheet");
 
                     if (LoadSpritesv2.Count <= 0)
@@ -551,7 +668,7 @@ namespace TaxReceiptTool
 
                         RSDKv2.Animation.AnimationEntry a = new RSDKv2.Animation.AnimationEntry();
                         if (s == 0) a.AnimName = name + " Animation";
-                        else if (s > 0) a.AnimName = name + " Animation " + s;
+                        else if (s > 0) a.AnimName = name + "Animation " + s;
                         for (int i = 0; i < SpriteFramesv2.Count; i++)
                         {
                             RSDKv2.Animation.AnimationEntry.Frame Frame = new RSDKv2.Animation.AnimationEntry.Frame();
@@ -603,6 +720,49 @@ namespace TaxReceiptTool
                         }
                     }
 
+                    List<RSDKv1.Script.Sub.Function> CollisionvB = subvB.GetFunctionByName("PlayerObjectCollision");
+
+                    List<RSDKvB.Animation.sprHitbox> HitboxesvB = new List<RSDKvB.Animation.sprHitbox>();
+
+                    animvB.CollisionBoxes.Clear();
+
+                    if (CollisionvB.Count <= 0)
+                    {
+                        RSDKvB.Animation.sprHitbox hb = new RSDKvB.Animation.sprHitbox();
+                        hb.Left = 0;
+                        hb.Top = 0;
+                        hb.Right = 0;
+                        hb.Bottom = 0;
+                        HitboxesvB.Add(hb);
+                    }
+
+                    for (int i = 0; i < CollisionvB.Count; i++)
+                    {
+                        string name = CollisionvB[i].Paramaters[0].Replace("C_", "");
+                        sbyte x, y, w, h;
+                        x = y = w = h = 0;
+                        try
+                        {
+                            x = sbyte.Parse(CollisionvB[i].Paramaters[1]);
+                            y = sbyte.Parse(CollisionvB[i].Paramaters[2]);
+                            w = sbyte.Parse(CollisionvB[i].Paramaters[3]);
+                            h = sbyte.Parse(CollisionvB[i].Paramaters[4]);
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                        RSDKvB.Animation.sprHitbox hb = new RSDKvB.Animation.sprHitbox();
+                        hb.Top = x;
+                        hb.Left = y;
+                        hb.Right = w;
+                        hb.Bottom = h;
+                        //for (int c = 0; c < animvB.Count; c++)
+                        //{
+                            animvB.CollisionBoxes.Add(hb);
+                        //}
+                    }
+
                     List<RSDKv1.Script.Sub.Function> LoadSpritesvB = subvB.GetFunctionByName("LoadSpriteSheet");
 
                     for (int i = 0; i < LoadSpritesvB.Count; i++)
@@ -615,7 +775,7 @@ namespace TaxReceiptTool
                     for (byte s = 0; s < LoadSpritesvB.Count; s++)
                     {
                         RSDKvB.Animation.AnimationEntry a = new RSDKvB.Animation.AnimationEntry();
-                        a.AnimName = name + " Animation " + s;
+                        a.AnimName = name + "Animation " + s;
                         for (int i = 0; i < SpriteFramesvB.Count; i++)
                         {
                             RSDKvB.Animation.AnimationEntry.Frame Frame = new RSDKvB.Animation.AnimationEntry.Frame();
@@ -669,6 +829,67 @@ namespace TaxReceiptTool
                         }
                     }
 
+                    List<RSDKv1.Script.Sub.Function> Collisionv5 = subv5.GetFunctionByName("PlayerObjectCollision");
+
+                    for (int i = 0; i < Scripts[Value0].Subs.Count; i++)
+                    {
+                        List<RSDKv1.Script.Sub.Function> cb = Scripts[Value0].Subs[i].GetFunctionByName("PlayerObjectCollision");
+                        for (int ii = 0; ii < cb.Count; ii++)
+                        {
+                            Collisionv5.Add(cb[ii]);
+                        }
+                    }
+
+                    List<RSDKv5.Animation.AnimationEntry.Frame.HitBox> Hitboxesv5 = new List<RSDKv5.Animation.AnimationEntry.Frame.HitBox>();
+
+                    animv5.CollisionBoxes.Clear();
+
+                    if (Collisionv5.Count <= 0)
+                    {
+                        RSDKv5.Animation.AnimationEntry.Frame.HitBox hb = new RSDKv5.Animation.AnimationEntry.Frame.HitBox();
+                        hb.X = 0;
+                        hb.Y = 0;
+                        hb.Width = 0;
+                        hb.Height = 0;
+                        Hitboxesv5.Add(hb);
+                    }
+
+                    for (int i = 0; i < Collisionv5.Count; i++)
+                    {
+                        string name = Collisionv5[i].Paramaters[0].Replace("C_", "");
+                        short x, y, w, h;
+                        x = y = w = h = 0;
+                        try
+                        {
+                            if (Collisionv5[i].Paramaters.Count > 5)
+                            {
+                                x = short.Parse(Collisionv5[i].Paramaters[2]);
+                                y = short.Parse(Collisionv5[i].Paramaters[3]);
+                                w = short.Parse(Collisionv5[i].Paramaters[4]);
+                                h = short.Parse(Collisionv5[i].Paramaters[5]);
+                            }
+                            else
+                            {
+                                x = short.Parse(Collisionv5[i].Paramaters[1]);
+                                y = short.Parse(Collisionv5[i].Paramaters[2]);
+                                w = short.Parse(Collisionv5[i].Paramaters[3]);
+                                h = short.Parse(Collisionv5[i].Paramaters[4]);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                        RSDKv5.Animation.AnimationEntry.Frame.HitBox hb = new RSDKv5.Animation.AnimationEntry.Frame.HitBox();
+                        hb.X = x;
+                        hb.Y = y;
+                        hb.Width = w;
+                        hb.Height = h;
+                        Hitboxesv5.Add(hb);
+                        if (animv5.CollisionBoxes.Contains(name)) name += " " + (i + 1);
+                        animv5.CollisionBoxes.Add(name);
+                    }
+
                     List<RSDKv1.Script.Sub.Function> LoadSpritesv5 = subv5.GetFunctionByName("LoadSpriteSheet");
 
                     for (int i = 0; i < LoadSpritesv5.Count; i++)
@@ -681,18 +902,41 @@ namespace TaxReceiptTool
                     for (byte s = 0; s < LoadSpritesv5.Count; s++)
                     {
                         RSDKv5.Animation.AnimationEntry a = new RSDKv5.Animation.AnimationEntry();
-                        a.AnimName = name + " Animation " + s;
+                        switch(s)
+                        {
+                            case 0:
+                                //a.AnimName = name + "Main";
+                                a.AnimName = Path.GetFileNameWithoutExtension(scriptnames[Value0]).Replace(" ", "");
+                                break;
+                            default:
+                                a.AnimName = name + "Animation " + (s + 1);
+                                break;
+                        }
                         for (int i = 0; i < SpriteFramesv5.Count; i++)
                         {
                             RSDKv5.Animation.AnimationEntry.Frame Frame = new RSDKv5.Animation.AnimationEntry.Frame();
-                            Frame.PivotX = Convert.ToSByte(SpriteFramesv5[i].Paramaters[0]);
-                            Frame.PivotY = Convert.ToSByte(SpriteFramesv5[i].Paramaters[1]);
-                            Frame.Width = Convert.ToByte(SpriteFramesv5[i].Paramaters[2]);
-                            Frame.Height = Convert.ToByte(SpriteFramesv5[i].Paramaters[3]);
-                            Frame.X = Convert.ToByte(SpriteFramesv5[i].Paramaters[4]);
-                            Frame.Y = Convert.ToByte(SpriteFramesv5[i].Paramaters[5]);
+                            Frame.PivotX = 0;
+                            Frame.PivotX = 0;
+                            Frame.X = 0;
+                            Frame.Y = 0;
+                            Frame.Width = 0;
+                            Frame.Height = 0;
+                            try
+                            {
+                                Frame.PivotX = Convert.ToInt16(SpriteFramesv5[i].Paramaters[0]);
+                                Frame.PivotY = Convert.ToInt16(SpriteFramesv5[i].Paramaters[1]);
+                                Frame.Width = Convert.ToInt16(SpriteFramesv5[i].Paramaters[2]);
+                                Frame.Height = Convert.ToInt16(SpriteFramesv5[i].Paramaters[3]);
+                                Frame.X = Convert.ToInt16(SpriteFramesv5[i].Paramaters[4]);
+                                Frame.Y = Convert.ToInt16(SpriteFramesv5[i].Paramaters[5]);
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Fuck!");
+                            }
                             Frame.Delay = 256;
                             Frame.SpriteSheet = s;
+                            Frame.HitBoxes = Hitboxesv5;
                             a.Frames.Add(Frame);
                         }
                         sprAnimv5.Add(a);
@@ -704,9 +948,13 @@ namespace TaxReceiptTool
                     }
 
                     string animnamev5 = datafolderpath + "//Animations//" + scriptnames[Value0++] + ".bin";
-                    
 
-                    animv5.Write(new RSDKv5.Writer(animnamev5));
+
+                    //if it doesn't have any info don't create it
+                    if (animv5.Animations.Count > 0 || animv5.CollisionBoxes.Count > 0 || animv5.SpriteSheets.Count > 0)
+                    {
+                        animv5.Write(new RSDKv5.Writer(animnamev5));
+                    }
 
                     break;
             }
