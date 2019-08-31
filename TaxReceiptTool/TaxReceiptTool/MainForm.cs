@@ -844,16 +844,6 @@ namespace TaxReceiptTool
 
                     animv5.CollisionBoxes.Clear();
 
-                    if (Collisionv5.Count <= 0)
-                    {
-                        RSDKv5.Animation.AnimationEntry.Frame.HitBox hb = new RSDKv5.Animation.AnimationEntry.Frame.HitBox();
-                        hb.X = 0;
-                        hb.Y = 0;
-                        hb.Width = 0;
-                        hb.Height = 0;
-                        Hitboxesv5.Add(hb);
-                    }
-
                     for (int i = 0; i < Collisionv5.Count; i++)
                     {
                         string name = Collisionv5[i].Paramaters[0].Replace("C_", "");
@@ -948,7 +938,6 @@ namespace TaxReceiptTool
                     }
 
                     string animnamev5 = datafolderpath + "//Animations//" + scriptnames[Value0++] + ".bin";
-
 
                     //if it doesn't have any info don't create it
                     if (animv5.Animations.Count > 0 || animv5.CollisionBoxes.Count > 0 || animv5.SpriteSheets.Count > 0)
